@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
-import todos from './todos';
+import todoList from './todoList';
 import task from './task';
 
 const reducer = combineReducers({
-  todos,
+  todoList,
   task
 });
 

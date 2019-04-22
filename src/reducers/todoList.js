@@ -1,11 +1,11 @@
 import * as types from '../actions/actionTypes';
 
-const todos = (state = [], action) => {
+const todoList = (state = [], action) => {
   switch (action.type) {
     case types.ADD_TODO:
       return [{
-        id: '',
-        text: action.text,
+        id: 1,
+        task: action.task,
         complete: false,
       }, ...state];
     default:
@@ -13,4 +13,4 @@ const todos = (state = [], action) => {
   }
 };
 
-export default todos;
+export default todoList;
