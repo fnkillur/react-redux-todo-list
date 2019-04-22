@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import AddTodo from './AddTodo';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        todoapp
-      </div>
+      <React.Fragment>
+        <AddTodo/>
+      </React.Fragment>
     );
   }
 }
 
-export default App;
+export default connect()(App);
