@@ -1,30 +1,38 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import AddInput from '../components/AddInput';
-import {input, add} from '../actions';
+import {input, add, increaseId} from '../actions';
 
-class AddTodo extends Component {
+const AddTodo = ({task, onChange, onSubmit, id, increaseId}) => {
 
-  render() {
-    const {task, onChange, onSubmit} = this.props;
+  const handleSubmit = task => {
+    onSubmit({
+      id,
+      task,
+      complete: false
+    });
 
-    return (
-      <AddInput
-        value={task}
-        onChange={onChange}
-        onSubmit={onSubmit}
-      />
-    );
-  }
-}
+    increaseId(id);
+  };
+
+  return (
+    <AddInput
+      value={task}
+      onChange={onChange}
+      onSubmit={handleSubmit}
+    />
+  );
+};
 
 const mapStateToProps = state => ({
-  task: state.task
+  task: state.task,
+  id: state.todoId
 });
 
 const mapDispatchToProps = dispatch => ({
   onChange: task => dispatch(input(task)),
-  onSubmit: task => dispatch(add(task)),
+  onSubmit: todo => dispatch(add(todo)),
+  increaseId: id => dispatch(increaseId(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddTodo);

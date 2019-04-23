@@ -5,7 +5,17 @@ export const input = task => ({
   task
 });
 
-export const add = task => ({
+export const add = todo => ({
   type: types.ADD_TODO,
-  task,
+  todo
+});
+
+export const remove = id => ({
+  type: types.REMOVE_TODO,
+  id
+});
+
+export const increaseId = id => ({
+  type: types.INCREASE_ID,
+  id
 });

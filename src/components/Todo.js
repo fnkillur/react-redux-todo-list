@@ -1,18 +1,23 @@
-import React, {Component} from 'react';
+import React from 'react';
+import './Todo.scss';
 
-class Todo extends Component {
-  render() {
-    return (
-      <li>
-        <section className='view'>
-          {this.props.todo.task}
-        </section>
-        <section className='edit'>
+const Todo = ({todo, onRemove}) => {
 
-        </section>
-      </li>
-    );
-  }
-}
+  const handleClick = e => {
+    onRemove(todo.id);
+  };
+
+  return (
+    <li className='todo'>
+      <section className='view'>
+        <label>{todo.task}</label>
+        <button className='btn-remove' onClick={handleClick}>X</button>
+      </section>
+      <section className='edit'>
+
+      </section>
+    </li>
+  );
+};
 
 export default Todo;

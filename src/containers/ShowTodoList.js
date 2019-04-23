@@ -1,22 +1,22 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import TodoList from '../components/TodoList';
+import {remove} from '../actions';
 
-class ShowTodoList extends Component {
-  render() {
-    const {todoList} = this.props;
-
-    return (
-      <TodoList
-        todoList={todoList}
-      />
-    );
-  }
-}
+const ShowTodoList = ({todoList, onRemove}) => {
+  return (
+    <TodoList
+      todoList={todoList}
+      onRemove={onRemove}
+    />
+  );
+};
 
 const mapStateToProps = state => ({
-  todoList: state.todoList,
+  todoList: state.todoList
 });
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  onRemove: id => dispatch(remove(id))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShowTodoList);

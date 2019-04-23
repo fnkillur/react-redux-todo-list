@@ -1,0 +1,19 @@
+.todo {
+  padding: 10px 20px;
+
+  .view {
+    display: flex;
+    justify-content: space-between;
+
+    .btn-remove {
+      width: 30px;
+      height: 30px;
+      font-size: 22px;
+      color: #F78181;
+      background-color: #FBF8EF;
+      border: none;
+      outline: none;
+    }
+  }
+}
+

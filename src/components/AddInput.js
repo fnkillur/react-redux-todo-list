@@ -1,32 +1,29 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './AddInput.scss';
 
-class AddInput extends Component {
-
-  handleChange = e => {
-    this.props.onChange(e.target.value);
+const AddInput = ({onChange, onSubmit, value}) => {
+  const handleChange = e => {
+    onChange(e.target.value);
   };
 
-  handleKeyDown = e => {
+  const handleKeyDown = e => {
     if (e.keyCode !== 13) return;
 
-    this.props.onSubmit(this.props.value);
-    this.props.onChange('');
+    onSubmit(value);
+    onChange('');
   };
 
-  render() {
-    return (
-      <input
-        type='text'
-        name='task'
-        className='input-task'
-        placeholder='+ add a new task'
-        value={this.props.value}
-        onChange={this.handleChange}
-        onKeyDown={this.handleKeyDown}
-      />
-    );
-  }
-}
+  return (
+    <input
+      type='text'
+      name='task'
+      className='input-task'
+      placeholder='+ add a new task'
+      value={value}
+      onChange={handleChange}
+      onKeyDown={handleKeyDown}
+    />
+  );
+};
 
 export default AddInput;

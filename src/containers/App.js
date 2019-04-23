@@ -2,14 +2,15 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import AddTodo from './AddTodo';
 import ShowTodoList from './ShowTodoList';
+import './App.scss';
 
 class App extends Component {
   render() {
     return (
-      <React.Fragment>
+      <div className='app'>
         <AddTodo/>
         <ShowTodoList/>
-      </React.Fragment>
+      </div>
     );
   }
 }
