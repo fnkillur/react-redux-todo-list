@@ -1,7 +1,7 @@
 import * as types from './actionTypes';
 
 export const input = task => ({
-  type: types.INPUT_TODO,
+  type: types.INPUT_TASK,
   task
 });
 
@@ -17,5 +17,15 @@ export const remove = id => ({
 
 export const increaseId = id => ({
   type: types.INCREASE_ID,
+  id
+});
+
+export const edit = task => ({
+  type: types.EDIT_TASK,
+  task
+});
+
+export const toggleEditing = id => ({
+  type: types.TOGGLE_EDITING,
   id
 });
