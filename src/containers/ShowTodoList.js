@@ -1,17 +1,19 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import TodoList from '../components/TodoList';
-import {remove, edit, toggleEditing} from '../actions';
+import {remove, edit, toggleEditing, modify} from '../actions';
 
-const ShowTodoList = ({todoList, onRemove, editTask, onChange, editing, onDoubleClick}) => {
+const ShowTodoList = ({todoList, removeTodo, editTask, changeEditTodo, editing, toggleEditing, modifyTodo}) => {
+
   return (
     <TodoList
       todoList={todoList}
-      onRemove={onRemove}
+      removeTodo={removeTodo}
       editTask={editTask}
-      onChange={onChange}
+      changeEditTodo={changeEditTodo}
       editing={editing}
-      onDoubleClick={onDoubleClick}
+      toggleEditing={toggleEditing}
+      modifyTodo={modifyTodo}
     />
   );
 };
@@ -23,9 +25,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onRemove: id => dispatch(remove(id)),
-  onChange: task => dispatch(edit(task)),
-  onDoubleClick: id => dispatch(toggleEditing(id))
+  removeTodo: id => dispatch(remove(id)),
+  changeEditTodo: task => dispatch(edit(task)),
+  toggleEditing: id => dispatch(toggleEditing(id)),
+  modifyTodo: todo => dispatch(modify(todo))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShowTodoList);

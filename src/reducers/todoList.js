@@ -6,6 +6,8 @@ const todoList = (state = [], action) => {
       return [...state, action.todo];
     case types.REMOVE_TODO:
       return state.filter(todo => todo.id !== action.id);
+    case types.MODIFY_TODO:
+      return state.map(todo => (todo.id === action.todo.id && action.todo) || todo);
     default:
       return state;
   }

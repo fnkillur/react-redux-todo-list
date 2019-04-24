@@ -2,16 +2,17 @@ import React from 'react';
 import Todo from "./Todo";
 import './TodoList.scss';
 
-const TodoList = ({todoList, onRemove, editTask, onChange, editing, onDoubleClick}) => {
+const TodoList = ({todoList, removeTodo, editTask, changeEditTodo, editing, toggleEditing, modifyTodo}) => {
   const showTodoList = todoList.map(todo => (
     <Todo
       key={todo.id}
       todo={todo}
-      onRemove={onRemove}
+      removeTodo={removeTodo}
       editTask={editTask}
-      onChange={onChange}
+      changeEditTodo={changeEditTodo}
       editing={todo.id === editing}
-      onDoubleClick={onDoubleClick}
+      toggleEditing={toggleEditing}
+      modifyTodo={modifyTodo}
     />
   ));
 

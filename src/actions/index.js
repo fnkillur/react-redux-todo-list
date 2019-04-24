@@ -15,6 +15,11 @@ export const remove = id => ({
   id
 });
 
+export const modify = todo => ({
+  type: types.MODIFY_TODO,
+  todo
+});
+
 export const increaseId = id => ({
   type: types.INCREASE_ID,
   id

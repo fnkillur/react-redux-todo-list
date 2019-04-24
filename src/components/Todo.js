@@ -1,20 +1,43 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './Todo.scss';
 
-const Todo = ({todo, onRemove, editTask, onChange, editing, onDoubleClick}) => {
+const Todo = ({todo, removeTodo, editTask, changeEditTodo, editing, toggleEditing, modifyTodo}) => {
 
-  const handleDobuleClick = e => {
-    onDoubleClick(todo.id);
-    onChange(todo.task);
+  let editInput = React.createRef();
+
+  const handleDobuleClick = () => {
+    toggleEditing(todo.id);
+    changeEditTodo(todo.task);
   };
 
   const handleClick = e => {
-    onRemove(todo.id);
+    removeTodo(todo.id);
   };
 
   const handleChange = e => {
-    onChange(e.target.value);
+    changeEditTodo(e.target.value);
   };
+
+  const handleKeyDown = e => {
+
+    if (e.keyCode === 13) {
+      modifyTodo({
+        id: todo.id,
+        task: editTask,
+        complete: todo.complete
+      });
+
+      toggleEditing(null);
+    } else if (e.keyCode === 27) {
+      changeEditTodo(todo.task);
+
+      toggleEditing(null);
+    }
+  }
+
+  useEffect(() => {
+    editInput.current.focus();
+  }, [editing]);
 
   return (
     <li className={`todo ${editing && 'editing' || ''}`}>
@@ -24,12 +47,13 @@ const Todo = ({todo, onRemove, editTask, onChange, editing, onDoubleClick}) => {
       </section>
       <section className='edit'>
         <input
+          ref={editInput}
           type='text'
           name='editTask'
           className='edit-input'
           value={editTask}
           onChange={handleChange}
-          // onKeyDown={handleKeyDown}
+          onKeyDown={handleKeyDown}
         />
       </section>
     </li>
