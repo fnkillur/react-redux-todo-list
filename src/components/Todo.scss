@@ -1,17 +1,32 @@
 .todo {
   .view {
     display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
+    padding: 10px 0;
 
-    .btn-remove {
+    .btn {
       width: 30px;
       height: 30px;
       font-size: 22px;
-      color: #F78181;
       background-color: #FBF8EF;
       border: none;
       outline: none;
+    }
+
+    label {
+      flex-basis: 90%;
+      padding: auto;
+      margin: auto 10px;
+      span {
+        vertical-align: middle;
+      }
+    }
+
+    .btn-check {
+      color: #58ACFA;
+    }
+
+    .btn-remove {
+      color: #F78181;
     }
   }
 

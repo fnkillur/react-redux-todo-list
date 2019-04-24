@@ -42,8 +42,9 @@ const Todo = ({todo, removeTodo, editTask, changeEditTodo, editing, toggleEditin
   return (
     <li className={`todo ${editing && 'editing' || ''}`}>
       <section className='view' onDoubleClick={handleDobuleClick}>
-        <label>{todo.task}</label>
-        <button className='btn-remove' onClick={handleClick}>X</button>
+        <button className='btn btn-check'>O</button>
+        <label><span>{todo.task}</span></label>
+        <button className='btn btn-remove' onClick={handleClick}>X</button>
       </section>
       <section className='edit'>
         <input
